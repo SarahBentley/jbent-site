@@ -1,0 +1,26 @@
+.container {
+  display: flex; /* Use flexbox for horizontal layout */
+  align-items: center; /* Center items vertically within the container */
+}
+
+.textContainer {
+  flex: 1; /* Takes up half of the available space */
+  padding-right: 1rem; /* Add some space between text and image */
+}
+
+.profilePicture {
+  flex: 1; /* Takes up the other half of the available space */
+  display: flex; /* Use flexbox to align the image within its container */
+  align-items: center; /* Center the image vertically within its container */
+  justify-content: flex-start; /* Align the image to the left of the container */
+}
+
+.profileImg {
+  width: 100%; /* Make the image fill its container */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 200px; /* Maximum width to ensure it's reasonably large */
+  max-height: 200px; /* Maximum height to ensure it's reasonably large */
+  object-fit: cover; /* Ensure the image covers its container without distortion */
+  border: 4px solid black; /* Add a black border around the image */
+  border-radius: 20px; /* Round the edges of the image */
+}

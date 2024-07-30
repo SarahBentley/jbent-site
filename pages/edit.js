@@ -6,7 +6,6 @@ import { useTheme } from "next-themes";
 
 // Data
 import yourData from "../data/portfolio.json";
-import Cursor from "../components/Cursor";
 
 const Edit = () => {
   // states
@@ -54,7 +53,7 @@ const Edit = () => {
   };
 
   const deleteProject = (id) => {
-    const copyProjects = data.projects;
+    let copyProjects = data.projects;
     copyProjects = copyProjects.filter((project) => project.id !== id);
     setData({ ...data, projects: copyProjects });
   };
@@ -83,7 +82,7 @@ const Edit = () => {
   };
 
   const deleteService = (id) => {
-    const copyServices = data.services;
+    let copyServices = data.services;
     copyServices = copyServices.filter((service) => service.id !== id);
     setData({ ...data, services: copyServices });
   };
@@ -111,7 +110,7 @@ const Edit = () => {
   };
 
   const deleteSocials = (id) => {
-    const copySocials = data.socials;
+    let copySocials = data.socials;
     copySocials = copySocials.filter((social) => social.id !== id);
     setData({ ...data, socials: copySocials });
   };
@@ -149,7 +148,6 @@ const Edit = () => {
   return (
     <div className={`container mx-auto ${data.showCursor && "cursor-none"}`}>
       <Header isBlog></Header>
-      {data.showCursor && <Cursor />}
       <div className="mt-10">
         <div className={`${theme === "dark" ? "bg-transparent" : "bg-white"}`}>
           <div className="flex items-center justify-between">
@@ -208,6 +206,15 @@ const Edit = () => {
               <input
                 value={data.name}
                 onChange={(e) => setData({ ...data, name: e.target.value })}
+                className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
+                type="text"
+              ></input>
+            </div>
+            <div className="mt-5 flex items-center">
+              <label className="w-1/5 text-lg opacity-50">Landscape Image Source:</label>
+              <input
+                value={data.landscape}
+                onChange={(e) => setData({ ...data, landscape: e.target.value })}
                 className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
                 type="text"
               ></input>
@@ -728,21 +735,21 @@ const Edit = () => {
             <hr className="my-10"></hr>
             <div className="mt-10">
               <div className="flex">
-                <label className="w-1/5 text-lg opacity-50">Languages</label>
+                <label className="w-1/5 text-lg opacity-50">Skills</label>
                 <div className="w-4/5 ml-10 flex flex-col">
-                  {data.resume.languages.map((language, index) => (
+                  {data.resume.skills.map((skill, index) => (
                     <div key={index} className="flex">
                       <input
-                        value={language}
+                        value={skill}
                         onChange={(e) => {
                           setData({
                             ...data,
                             resume: {
                               ...data.resume,
-                              languages: [
-                                ...data.resume.languages.slice(0, index),
+                              skills: [
+                                ...data.resume.skills.slice(0, index),
                                 e.target.value,
-                                ...data.resume.languages.slice(index + 1),
+                                ...data.resume.skills.slice(index + 1),
                               ],
                             },
                           });
@@ -756,7 +763,7 @@ const Edit = () => {
                             ...data,
                             resume: {
                               ...data.resume,
-                              languages: data.resume.languages.filter(
+                              skills: data.resume.skills.filter(
                                 (value, i) => index !== i
                               ),
                             },
@@ -775,7 +782,7 @@ const Edit = () => {
                         ...data,
                         resume: {
                           ...data.resume,
-                          languages: [...data.resume.languages, "Added"],
+                          skills: [...data.resume.skills, "Added"],
                         },
                       })
                     }
@@ -784,7 +791,7 @@ const Edit = () => {
                   </Button>
                 </div>
               </div>
-              <hr className="my-10"></hr>
+              {/* <hr className="my-10"></hr>
               <div className="flex">
                 <label className="w-1/5 text-lg opacity-50">Frameworks</label>
                 <div className="w-4/5 ml-10 flex flex-col">
@@ -899,7 +906,7 @@ const Edit = () => {
                     Add +
                   </Button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         )}
