@@ -5,6 +5,22 @@
 - run `yarn`
 - `yarn dev`
 
+## To start local version
+
+- Open terminal
+- run `yarn dev` in terminal in cursor
+- open `http://localhost:3000`
+make any edits you want on the interface
+
+## To deploy changes to website
+
+We need to push the changes to the remote repo.
+
+- run `git add .` to add all the changes
+- run `git commit -m "commit message"` to commit the changes
+- run `git push` to push the changes to the remote repo
+
+Then it should automatically deploy to netlify, might take about 5 minutes.
 
 ### How To Deploy - 
 
